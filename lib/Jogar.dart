@@ -1,4 +1,7 @@
+import 'package:flipcoin/Resultado.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
+import 'package:flipcoin/Jogar.dart';
 
 class Jogar extends StatefulWidget {
   const Jogar({Key? key}) : super(key: key);
@@ -8,10 +11,15 @@ class Jogar extends StatefulWidget {
 }
 
 class _JogarState extends State<Jogar> {
+  void _exibirResultado() {
+    var itens = ["cara", "coroa"];
+    var num = Random().nextInt(itens.length);
+    var resultado = itens[num];
 
-  void _exibirResultado(){
-
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Resultado(resultado)));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +34,6 @@ class _JogarState extends State<Jogar> {
               onTap: _exibirResultado,
               child: Image.asset("image/botao_jogar.png"),
             ),
-
           ],
         ),
       ),
